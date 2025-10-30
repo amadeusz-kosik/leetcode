@@ -1,0 +1,10 @@
+SELECT
+    e.employee_id
+FROM
+    (SELECT * FROM Employees WHERE manager_id IS NOT NULL) e
+LEFT JOIN
+    Employees m ON e.manager_id = m.employee_id
+WHERE
+    e.salary < 30000 AND m.employee_id IS NULL
+ORDER BY 
+    e.employee_id ASC
